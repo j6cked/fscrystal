@@ -15,7 +15,6 @@ end)
 
 spawn(function () 
     getgenv().AutoFS = true do
-        local remotePath = game:GetService("Workspace").Map["Training_Collisions"].FistStrength["TrainingArea_2"].CFrame
     
         while getgenv().AutoFS == true do
             function getCurrentPlayerPOS()
