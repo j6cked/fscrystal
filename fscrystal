@@ -1,0 +1,41 @@
+getgenv().AutoFS = true
+
+spawn(function ()
+    while getgenv().AutoFS == true do
+        local args = {
+            [1] = {
+                [1] = "Add_FS_Request"
+            }
+        }
+        
+        game:GetService("ReplicatedStorage").RemoteEvent:FireServer(unpack(args))
+        wait()
+    end
+end)
+
+spawn(function () 
+    getgenv().AutoFS = true do
+        local remotePath = game:GetService("Workspace").Map["Training_Collisions"].FistStrength["TrainingArea_2"].CFrame
+    
+        while getgenv().AutoFS == true do
+            function getCurrentPlayerPOS()
+                local plyr = game.Players.LocalPlayer;
+                if plyr.Character then
+                return plyr.Character.HumanoidRootPart.Position;
+                end
+                   return false;
+            
+            end
+            
+            function teleportTo(placeCFrame)
+                local plyr = game.Players.LocalPlayer;
+                if plyr.Character then
+                 plyr.Character.HumanoidRootPart.CFrame = placeCFrame
+                end
+            end
+            teleportTo(remotePath)
+            wait()
+        end
+    end
+    local remotePath = game:GetService("Workspace").Map["Training_Collisions"].FistStrength["TrainingArea_3"].CFrame
+end)
